@@ -1,4 +1,10 @@
 #!/bin/bash
+# Vishnu Thiagarajan, 2017
+# http://vishnut.me
+# This script will set your wallpaper
+# to be National Geographic's picture
+# of the Day.
+# Published under MIT license
 
 echo "Downloading Document"
 curl "http://www.nationalgeographic.com/photography/photo-of-the-day/" > images/doc.txt
