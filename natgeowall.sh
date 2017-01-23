@@ -6,6 +6,11 @@
 # of the Day.
 # Published under MIT license
 
+BASEDIR=$(dirname "$0")
+echo "$BASEDIR"
+
+cd $BASEDIR
+
 echo "Downloading Document"
 curl "http://www.nationalgeographic.com/photography/photo-of-the-day/" > images/doc.txt
 
