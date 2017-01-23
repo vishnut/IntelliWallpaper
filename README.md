@@ -6,14 +6,19 @@ This script will download National Geographic's Photo of the Day and change your
 Of course, since we want it to run automatically, we also will need to create a cron job using crontab. You can read more about crontab [here](https://ole.michelsen.dk/blog/schedule-jobs-with-crontab-on-mac-osx.html). However, if want it to simply change your wallpaper once a day, you can just follow these instructions.
 
 Begin by opening terminal and opening the job list with an editor. For simplicity, we will use nano here.
+
 `env EDITOR=nano crontab -e`
 
 Type in the following:
+
 `*/180 * * * *  sh /path/to/file/IntelliWallpaper/natgeowall.sh`
+
 Of course, replace /path/to/file will the path to the IntelliWallpaper folder. For example, if you have the folder saved in Documents, you can type in "~/Documents/IntelliWallpaper/natgeowall.sh". 180 represents the time between runs. This job will run every 3 hours and ensure that the wallpaper is set to the one for that day. You can change the values if you want or maybe even set a particular time at which you want the script to run. 
 
 To save and exit, press CTRL+O (capital o, not 0) to save followed by enter and then CTRL+X to exit. To check that the cron job has been added properly, type:
+
 `crontab -l`
+
 The job should appear there.
 
 ## Next Steps
