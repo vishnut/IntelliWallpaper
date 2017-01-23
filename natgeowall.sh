@@ -8,7 +8,7 @@
 
 BASEDIR=$(dirname "$0")
 echo "$BASEDIR"
-FILENAME="bgrd"
+FILENAME="${RANDOM}_${RANDOM}"
 
 cd $BASEDIR
 
@@ -24,10 +24,12 @@ echo "Found Image URL: $saveURL"
 curl -o images/"$FILENAME".jpg "$saveURL"
 echo "Image Saved as images/${FILENAME}.jpg"
 
+#cd images
+#find . ! -name "${FILENAME}.jpg' -type f -exec rm -f {} +
 rm images/doc.txt
 rm images/docurl.txt
-echo "Removed temp files"
-
+#echo "Removed temp files"
+#cd ..
 cwdText=`pwd`
 
 #Clear first
