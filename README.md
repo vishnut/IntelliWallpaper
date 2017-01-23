@@ -5,6 +5,8 @@ This script will download National Geographic's Photo of the Day and change your
 
 Of course, since we want it to run automatically, we also will need to create a cron job using crontab. You can read more about crontab [here](https://ole.michelsen.dk/blog/schedule-jobs-with-crontab-on-mac-osx.html). However, if want it to simply change your wallpaper once a day, you can just follow these instructions.
 
+## Setup
+
 Begin by opening terminal and opening the job list with an editor. For simplicity, we will use nano here.
 
 `env EDITOR=nano crontab -e`
