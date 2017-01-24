@@ -21,34 +21,17 @@ grep -i -h -o "http://yourshot.nationalgeographic.com/u/.*./" images/doc.txt > i
 saveURL=`grep -m 1 -v "\"" images/docurl.txt`
 echo "Found Image URL: $saveURL"
 
+rm ${BASEDIR}/images/*.jpg
 curl -o images/"$FILENAME".jpg "$saveURL"
 echo "Image Saved as images/${FILENAME}.jpg"
 
-#cd images
-#find . ! -name "${FILENAME}.jpg' -type f -exec rm -f {} +
 rm images/doc.txt
 rm images/docurl.txt
-#echo "Removed temp files"
-#cd ..
+echo "Removed temp files"
 cwdText=`pwd`
-
-#Clear first
-saveLo="${cwdText}/images/black.jpg"
-setScrip="tell application \"System Events\"
-    set desktopCount to count of desktops
-    repeat with desktopNumber from 1 to desktopCount
-        tell desktop desktopNumber
-            set picture to \"${saveLo}\"
-        end tell
-    end repeat
-end tell"
-
-osascript -e "$setScrip"
 
 saveLoc="${cwdText}/images/${FILENAME}.jpg"
 echo $saveLoc
-
-#setScript="tell application \"Finder\" to set desktop picture to \"${saveLoc}\" as POSIX file" 
 
 setScript="tell application \"System Events\"
     set desktopCount to count of desktops
@@ -60,4 +43,8 @@ setScript="tell application \"System Events\"
 end tell"
 
 osascript -e "$setScript"
+
+setScript="tell application \"Finder\" to set desktop picture to \"${saveLoc}\" as POSIX file" 
+osascript -e "$setScript"
+
 echo "Wallpaper set!"
