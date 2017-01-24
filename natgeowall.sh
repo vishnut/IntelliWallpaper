@@ -1,8 +1,7 @@
 #!/bin/bash
 # Vishnu Thiagarajan, 2017
 # http://vishnut.me
-# This script will set your wallpaper
-# to be National Geographic's picture
+# This script will set your wallpaper to be National Geographic's picture
 # of the Day.
 # Published under MIT license
 
@@ -41,7 +40,6 @@ setScript="tell application \"System Events\"
         end tell
     end repeat
 end tell"
-
 osascript -e "$setScript"
 
 setScript="tell application \"Finder\" to set desktop picture to \"${saveLoc}\" as POSIX file" 
