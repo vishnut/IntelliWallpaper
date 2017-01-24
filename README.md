@@ -21,10 +21,12 @@ To save and exit, press CTRL+O (capital o, not 0) to save followed by enter and 
 
 `crontab -l`
 
-The job should appear there.
+The job should appear there. What this does is automatically find/download the wallpaper from online, replace the images in the images directory, and ideally set your wallpaper. *Look at issues section for details*
+
+Next, go into `System Preferences -> Desktop and Screen Saver` and set the image location to be the IntelliWallpaper/images folder. Select Change Picture and pick 'Every hour' or 'When waking from sleep'. This will force macOS to check whether a new wallpaper is present and automatically change.
 
 ## Issues
-Apple doesn't like setting a wallpaper with the same name in the same location. If you log out and log back in, macOS will check the location again. For example, if your background is currently called picture1.jpg and you want to use a different image but you want to store it there with the same name, even if you switch your wallpaper to picture2.jpg and then replace picture1.jpg and try to change your wallpaper to the new picture1.jpg, your wallpaper will be changed to the old picture1.jpg. When you log out and log back in, your background will automatically be set to the new image. There are ways to use this to your advantage but there are problems with this too. I'm still working on changing this repo so that I can use it without having to use different file names every time. Or maybe I'll just delete existing images and randomize the downloaded names so that it will be getting an old image is improbable enough.
+When you run the script directly, the wallpaper will be immediately changed. When the script is scheduled to run on its own, the image in the folder will be replaced but the wallpaper is not changed automatically (at least not immediately). 
 
 ## Next Steps
 This script is meant to learn what you like and use that to frequently change your wallpaper. Of course, the first step in this process is to be able to automate the changing of wallpapers. That is now done. The next step would be to take feedback and tune the script to pick images based on feedback. The challenge there is that the images must still be of high quality and I will need a source that will both always have fresh images and be large enough that I can filter based on categories. I am considering using a Google Image Search with filters on size and time. That will require a lot more work but for now, I can enjoy pretty wallpapers everyday.
