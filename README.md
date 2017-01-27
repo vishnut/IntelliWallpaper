@@ -1,5 +1,5 @@
 # IntelliWallpaper
-Are you bored of your wallpaper? Windows users get to see always see new and beautiful images in their lock screen. Without having to download gigabytes of images, it would be nice to have different wallpapers taken from the internet and set automatically everyday on Macs. 
+Are you bored of your wallpaper? Windows users get to always see new and beautiful images in their lock screen. Without having to download gigabytes of images, it would be nice to have different wallpapers taken from the internet and set automatically everyday on Macs. 
 
 This script will download National Geographic's Photo of the Day and change your wallpaper. 
 
