@@ -47,12 +47,12 @@ def load_images():
     return json.dumps(images.curated_images)
 
 def write_out_votes(image_votes, file_name):
-    if os.path.isfile('/home/ubuntu/IntelliWallpaper/' + file_name):
-        with open('/home/ubuntu/IntelliWallpaper/' + file_name) as f:
+    if os.path.isfile(config.DATA_DIRECTORY + file_name):
+        with open(config.DATA_DIRECTORY + file_name) as f:
             data = json.load(f)
             if data:
                 images_votes.extend(data)
-    with open('/home/ubuntu/IntelliWallpaper/' + file_name, 'w') as f:
+    with open(config.DATA_DIRECTORY + file_name, 'w') as f:
         json.dump(images_votes, f)
 
 @app.route('/thumbs-up/', methods=['POST'])
