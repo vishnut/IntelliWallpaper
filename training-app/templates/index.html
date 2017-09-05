@@ -26,13 +26,19 @@
                 text-align: center;
             }
 
-            .reactions-area i {
+            .reactions-area form {
+                display: inline;
+            }
+
+            .reactions-area button {
                 padding: 15px 75px 15px 75px;
                 background-color: #eee;
                 color: #555;
+		border: 0;
+                display: inline;
             }
 
-            .reactions-area i:hover {
+            .reactions-area button:hover {
                 background-color: #fff;
                 color: #333;
             }
@@ -41,13 +47,21 @@
     <body>
         <div class="training-image">
             <figure>
-                <img class="main-img" src="https://images.unsplash.com/photo-1502899576159-f224dc2349fa" />
-                <figcaption>Annie Spratt / <a href="https://unsplash.com">Unsplash</a></figcaption>
+                <img class="main-img" src="{{image}}" />
+                <figcaption><a href="{{link}}" target="_blank">{{name}}</a> / <a href="https://unsplash.com" target="_blank">Unsplash</a></figcaption>
             </figure>
             <br/>
             <div class="reactions-area">
-                <i class="fa fa-thumbs-up fa-5x" aria-hidden="true"></i>
-                <i class="fa fa-thumbs-down fa-5x" aria-hidden="true"></i>
+                <form action="/thumbs-up/" method="POST">
+                    <button class="ibutton" name="good" type="submit">
+                        <i class="fa fa-thumbs-up fa-5x" aria-hidden="true"></i>
+                    </button>
+                </form>
+                <form action="/thumbs-down/" method="POST">
+                    <button class="ibutton" name="bad" type="submit">
+                        <i class="fa fa-thumbs-down fa-5x" aria-hidden="true"></i>
+                    </button>
+                </form>
             </div>
         </div>
     </body>

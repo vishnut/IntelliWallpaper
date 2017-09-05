@@ -2,3 +2,7 @@
 */.DSStore
 images/
 *.pem
+*/config.py
+model/data
+data/*
+model/__pycache__/
