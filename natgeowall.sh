@@ -12,10 +12,10 @@ FILENAME="${RANDOM}_${RANDOM}"
 cd $BASEDIR
 
 echo "Downloading Document"
-curl "http://www.nationalgeographic.com/photography/photo-of-the-day/" > images/doc.txt
+curl "https://www.nationalgeographic.com/photography/photo-of-the-day/" > images/doc.txt
 
 echo "Finding Image URL"
-grep -i -h -o "http://yourshot.nationalgeographic.com/u/.*./" images/doc.txt > images/docurl.txt
+grep -i -h -o "https://yourshot.nationalgeographic.com/u/.*./" images/doc.txt > images/docurl.txt
 
 saveURL=`grep -m 1 -v "\"" images/docurl.txt`
 echo "Found Image URL: $saveURL"
