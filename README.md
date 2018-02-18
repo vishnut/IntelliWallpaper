@@ -1,32 +1,21 @@
-# IntelliWallpaper
-Are you bored of your wallpaper? Windows users get to always see new and beautiful images in their lock screen. Without having to download gigabytes of images, it would be nice to have different wallpapers taken from the internet and set automatically everyday on Macs. 
+# IntelliWallpaper v2.0
 
-This script will download National Geographic's Photo of the Day and change your wallpaper. 
+![IntelliWallpaper](https://raw.githubusercontent.com/vishnut/IntelliWallpaper/master/macos/IntelliWallpaper/Assets.xcassets/AppIcon.appiconset/icon_256x256.png "IntelliWallpaper")
 
-Of course, since we want it to run automatically, we also will need to create a cron job using crontab. You can read more about crontab [here](https://ole.michelsen.dk/blog/schedule-jobs-with-crontab-on-mac-osx.html). However, if want it to simply change your wallpaper once a day, you can just follow these instructions.
+IntelliWallpaper attempts to automate the process of getting beautiful wallpapers everyday. Data is collected on app usage and from user input on the training page at [http://ec2-54-221-67-73.compute-1.amazonaws.com](http://ec2-54-221-67-73.compute-1.amazonaws.com). This data is then fed into multiple machine learning models so that the models can extract features that make up a good wallpaper. Once the models learn what images are "good wallpapers", other new models will attempt to personalize the wallpapers for each user based on past usage data on the app.
 
 ## Setup
 
-Begin by opening terminal and opening the job list with an editor. For simplicity, we will use nano here.
-
-`env EDITOR=nano crontab -e`
-
-Type in the following:
-
-`*/180 * * * *  sh /path/to/file/IntelliWallpaper/natgeowall.sh`
-
-Of course, replace /path/to/file will the path to the IntelliWallpaper folder. For example, if you have the folder saved in Documents, you can type in "~/Documents/IntelliWallpaper/natgeowall.sh". 180 represents the time between runs. This job will run every 3 hours and ensure that the wallpaper is set to the one for that day. You can change the values if you want or maybe even set a particular time at which you want the script to run. 
-
-To save and exit, press CTRL+O (capital o, not 0) to save followed by enter and then CTRL+X to exit. To check that the cron job has been added properly, type:
-
-`crontab -l`
-
-The job should appear there. What this does is automatically find/download the wallpaper from online, replace the images in the images directory, and ideally set your wallpaper. *Look at issues section for details*
-
-Next, go into `System Preferences -> Desktop and Screen Saver` and set the image location to be the IntelliWallpaper/images folder. Select Change Picture and pick 'Every hour' or 'When waking from sleep'. This will force macOS to check whether a new wallpaper is present and automatically change.
+Setup on v2 is simple. Clone the repository. The application binary will be present as IntelliWallpaper.app. You can move that to your Applications directory and run it. The rest of the files from the cloned repository can be deleted. 
 
 ## Issues
-When you run the script directly, the wallpaper will be immediately changed. When the script is scheduled to run on its own, the image in the folder will be replaced but the wallpaper is not changed automatically (at least not immediately). If this is fixed the step where you need to go into System Preferences will no longer be necessary. That said, maybe this is not a bad step. I am looking to add more images to the directory so that there is even more variation during the day.
+
+Images are currently stored in the Pictures directory under an "intelliwallpaper" directory. For now, the application assumes that such a directory exists and will fail if it does not. For first time setup, until this issue is resolved, simply create a folder called "intelliwallpaper" in the Pictures directory.
+
+## Changes from v1
+
+Version 1 used scripts to pull wallpapers from image sources such as National Geographic. Those scripts are still available under the [scripts directory](https://github.com/vishnut/IntelliWallpaper/tree/master/scripts). There were several problems with this approach. Most notably, you could often only get one image a day. That limitation no longer exists in v2. Additionally, there was no machine learning or personalization. 
 
 ## Next Steps
-This script is meant to learn what you like and use that to frequently change your wallpaper. Of course, the first step in this process is to be able to automate the changing of wallpapers. That is now done. The next step would be to take feedback and tune the script to pick images based on feedback. The challenge there is that the images must still be of high quality and I will need a source that will both always have fresh images and be large enough that I can filter based on categories. I am considering using a Google Image Search with filters on size and time. That will require a lot more work but for now, I can enjoy pretty wallpapers everyday.
+
+Machine learning models will need to be improved along with an increase in data collection. The planned approach right now is to use custom built models along with Clarif.ai to tag images first. At this step, the results of all of these models can be combined and passed into another model to distinguish good wallpapers from bad wallpapers. However, instead of this, if sufficient data exists, we could simply output images from the training curated list but personalize based on automated tags. Experimentation needed.
