@@ -12,7 +12,7 @@ FILENAME="${RANDOM}_${RANDOM}"
 cd $BASEDIR
 
 echo "Downloading Image URL"
-curl "http://ec2-54-197-169-159.compute-1.amazonaws.com/random-good-image" > images/docurl.txt
+curl "http://ec2-54-221-67-73.compute-1.amazonaws.com/random-good-image" > images/docurl.txt
 
 saveURL=`grep -m 1 -v "\"" images/docurl.txt`
 echo "Found Image URL: $saveURL"
